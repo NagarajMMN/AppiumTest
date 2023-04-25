@@ -88,9 +88,9 @@ public class EcommerceTest1 extends BaseTest {
             System.out.println(contextName);
         }
 
-       // driver.context("WEBVIEW_com.androidsample.generalstore");//chrome driver
-//        driver.findElement(By.name("q")).sendKeys("Nagaraj");
-//        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        driver.context("WEBVIEW_com.androidsample.generalstore");//chrome driver
+        driver.findElement(By.name("q")).sendKeys("Nagaraj");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.context("NATIVE_APP");
 

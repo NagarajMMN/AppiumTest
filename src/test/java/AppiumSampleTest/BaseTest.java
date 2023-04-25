@@ -22,7 +22,7 @@ public class BaseTest {
 	public void ConfigureAppium() throws MalformedURLException {
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName("NewEmulator");
-		options.setChromedriverExecutable("C:\\Users\\nagar\\Documents\\chromedriver_win32\\chromedriver.exe");
+		options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
 		//options.setApp("C:\\Users\\nagar\\eclipse-workspace\\Appium\\src\\test\\java\\Resources\\ApiDemos-debug.apk");
 		options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\General-Store.apk");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);
