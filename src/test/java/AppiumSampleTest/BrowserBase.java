@@ -20,18 +20,11 @@ public class BrowserBase {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("NewEmulator");
         options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+        options.setCapability("browserName","Chrome");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-
-
-    public Double getFormattedAmount(String amount)
-    {
-        Double price = Double.parseDouble(amount.substring(1));
-        return price;
-
-    }
     @AfterClass
     public void tearDown()
     {
