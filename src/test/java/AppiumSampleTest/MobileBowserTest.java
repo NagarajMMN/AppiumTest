@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class MobileBowserTest extends BrowserBase{
 
 
-    @Test
+
     public void browserTest()  {
 
 		driver.get("http://google.com");

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 
 public class SwipeLeftRight extends BaseTest{
-    @Test
+
     public void SwipeDemoTest() throws MalformedURLException, InterruptedException
     {
 

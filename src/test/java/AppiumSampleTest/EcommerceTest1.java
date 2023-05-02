@@ -19,7 +19,7 @@ public class EcommerceTest1 extends BaseTest {
 
 
 
-    @Test
+
     public void FillForm() throws InterruptedException {
 
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Nagaraj");

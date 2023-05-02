@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 
 public class LongPress extends BaseTest {
 
-    @Test
+@Test
     public void LongPressGesture() throws MalformedURLException, InterruptedException {
         driver.findElement(AppiumBy.accessibilityId("Views")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@text='Expandable Lists']")).click();
