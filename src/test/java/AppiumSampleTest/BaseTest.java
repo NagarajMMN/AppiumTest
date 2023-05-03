@@ -22,14 +22,14 @@ public class BaseTest {
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException {
 		UiAutomator2Options options = new UiAutomator2Options();
-		//options.setDeviceName("NewEmulator");   //this is for emulator congig
+		options.setDeviceName("NewEmulator");   //this is for emulator congig
 		//options.setDeviceName("SM-A307FN");  //this is for real device congig
 //		options.setPlatformName("Android");
-		options.setDeviceName("SampleDevice");
-		//options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
-		options.setApp("C:\\Users\\nagar\\eclipse-workspace\\Appium\\src\\test\\java\\Resources\\ApiDemos-debug.apk");
+		//options.setDeviceName("SampleDevice");
+		options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		//options.setApp("C:\\Users\\nagar\\eclipse-workspace\\Appium\\src\\test\\java\\Resources\\ApiDemos-debug.apk");
 		//options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\saucelab.apk");
-		//options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\General-Store.apk");
+		options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\General-Store.apk");
 		//options.setCapability("uiautomator2ServerInstallTimeout","60000");
 
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options); //for appium above version 2

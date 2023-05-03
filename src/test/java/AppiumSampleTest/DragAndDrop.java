@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 
 public class DragAndDrop extends BaseTest {
 
+    @Test
     public void DragDropTest() throws MalformedURLException, InterruptedException
     {
 
