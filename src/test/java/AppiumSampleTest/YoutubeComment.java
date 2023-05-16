@@ -17,8 +17,8 @@ public class YoutubeComment {
     @BeforeClass
     public void YouBase() throws MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName("NewEmulator");
-        options.setUdid("emulator-5554");
+        options.setDeviceName("Galaxy A30s");
+        options.setUdid("RZ8MC09NLNK");
         options.setPlatformName("Android");
         options.setPlatformVersion("11");
         options.setAutomationName("UiAutomator2");

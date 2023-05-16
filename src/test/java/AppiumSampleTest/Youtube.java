@@ -104,11 +104,12 @@ public class Youtube extends YoutubeComment {
 
                              }
 
-                        try {
-                                        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
-                        }catch (Exception e){System.out.println("No more Scroll");}
+//                        try {
+//                                        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
+//                        }catch (Exception e){System.out.println("No more Scroll");}
 
-               }driver.quit();
+               }Thread.sleep(10000);
+               driver.quit();
 
 
         }
