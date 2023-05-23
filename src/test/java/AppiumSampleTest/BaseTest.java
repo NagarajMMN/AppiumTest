@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import jdk.dynalink.beans.StaticClass;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -12,6 +15,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -19,32 +23,30 @@ import java.time.Duration;
 public class BaseTest {
 
 	public AndroidDriver driver;
+	 AppiumDriverLocalService server;
 
-	@BeforeTest
-	public void CloseNotification() throws MalformedURLException, InterruptedException {
-		UiAutomator2Options options = new UiAutomator2Options();
-		options.setDeviceName("SampleDevice");
-		options.setAppPackage("com.android.settings");
-		options.setAppActivity("com.android.settings.Settings");
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);////for appium below version 2
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]/android.widget.RadioButton")).click();
-		Thread.sleep(3000);
-
-
-	}
+//	@BeforeTest
+//	public void CloseNotification() throws MalformedURLException, InterruptedException {
+//		UiAutomator2Options options = new UiAutomator2Options();
+//		options.setDeviceName("SampleDevice");
+//		options.setAppPackage("com.android.settings");
+//		options.setAppActivity("com.android.settings.Settings");
+//		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);////for appium below version 2
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]/android.widget.RadioButton")).click();
+//		Thread.sleep(3000);
+//
+//
+//	}
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException {
-
 		UiAutomator2Options options = new UiAutomator2Options();
-
-
-		//options.setDeviceName("NewEmulator");   //this is for emulator congig
-		options.setDeviceName("SampleDevice");
+		options.setDeviceName("NewEmulator");   //this is for emulator congig
+		//options.setDeviceName("SampleDevice");
 
 
 		//options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
@@ -58,7 +60,7 @@ public class BaseTest {
 		//options.setCapability("uiautomator2ServerInstallTimeout","6000");
 
 		//driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options); //for appium above version 2
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);////for appium below version 2
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);////for appium below version 2
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
@@ -106,22 +108,22 @@ public class BaseTest {
 		//service.stop();
 	}
 
-	@AfterTest
-	public void OnNotification() throws MalformedURLException, InterruptedException {
-		UiAutomator2Options options = new UiAutomator2Options();
-		options.setDeviceName("SampleDevice");
-		options.setAppPackage("com.android.settings");
-		options.setAppActivity("com.android.settings.Settings");
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);////for appium below version 2
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
-		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]/android.widget.RadioButton")).click();
-		Thread.sleep(3000);
-		driver.quit();
-
-	}
+//	@AfterTest
+//	public void OnNotification() throws MalformedURLException, InterruptedException {
+//		UiAutomator2Options options = new UiAutomator2Options();
+//		options.setDeviceName("SampleDevice");
+//		options.setAppPackage("com.android.settings");
+//		options.setAppActivity("com.android.settings.Settings");
+//		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);////for appium below version 2
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).flingForward()"));
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[7]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[4]/android.widget.RelativeLayout")).click();
+//		driver.findElement(AppiumBy.xpath("//androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]/android.widget.RadioButton")).click();
+//		Thread.sleep(3000);
+//		driver.quit();
+//
+//	}
 
 }
