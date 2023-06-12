@@ -1,0 +1,9 @@
+command line to update maven dependencies
+    mvn versions:display-dependency-updates
+    mvn versions:use-next-releases
+    mvn versions:use-latest-releases
+
+command line to update plugins
+    mvn versions:display-plugin-updates
+    mvn versions:use-next-releases
+    mvn versions:use-latest-releases

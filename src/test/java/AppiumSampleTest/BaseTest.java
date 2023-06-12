@@ -44,6 +44,9 @@ public class BaseTest {
 //	}
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException {
+		AppiumDriverLocalService service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\nagar\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+				.withIPAddress("127.0.0.1").usingPort(4723).build();
+		service.start();
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName("NewEmulator");   //this is for emulator congig
 		//options.setDeviceName("SampleDevice");
@@ -52,15 +55,15 @@ public class BaseTest {
 		//options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
 		options.setChromedriverExecutable("C:\\Users\\nagar\\Downloads\\chromedriver_win32\\chromedriver.exe");
 
-		options.setApp("C:\\Users\\nagar\\eclipse-workspace\\Appium\\src\\test\\java\\Resources\\ApiDemos-debug.apk");
+		//options.setApp("C:\\Users\\nagar\\eclipse-workspace\\Appium\\src\\test\\java\\Resources\\ApiDemos-debug.apk");
 		//options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\saucelab.apk");
-		//options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\General-Store.apk");
+		options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\General-Store.apk");
 		//options.setApp("C:\\Users\\nagar\\IdeaProjects\\AppiumTest\\src\\main\\resources\\youtube.apk");
 
 		//options.setCapability("uiautomator2ServerInstallTimeout","6000");
 
-		//driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options); //for appium above version 2
-		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);////for appium below version 2
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options); //for appium above version 2
+		//driver = new AndroidDriver(new URL("http://127.0.0.1:5000/wd/hub"), options);////for appium below version 2
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 

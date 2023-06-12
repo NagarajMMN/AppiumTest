@@ -23,7 +23,7 @@ public class EcommerceTest1 extends BaseTest {
     public void FillForm() throws InterruptedException {
 
         driver.findElement(By.id("com.androidsample.generalstore:id/nameField")).sendKeys("Nagaraj");
-        driver.hideKeyboard();
+        //driver.hideKeyboard();
         driver.findElement(By.xpath("//android.widget.RadioButton[@text='Male']")).click();
         driver.findElement(By.id("android:id/text1")).click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Angola\"));"));
